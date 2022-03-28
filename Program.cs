@@ -17,7 +17,7 @@ namespace Sales
                 WriteLine(p);
              
             }
-
+            ReadLine();
         }
 
         

@@ -15,6 +15,7 @@ namespace Sales
             foreach (Product p in productList)
             {
                 WriteLine(p);
+             
             }
 
         }

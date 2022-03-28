@@ -22,7 +22,7 @@ namespace Sales
         }
         public override string ToString()
         {
-            return p.ProductName + " " + quantity.ToString() + " " + this.GetCost().ToString();
+            return $"{p.ProductName,15} {quantity,10} {this.GetCost()}";
         }
     }
 }

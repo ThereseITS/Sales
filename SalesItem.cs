@@ -7,22 +7,24 @@ namespace Sales
     class SalesItem
     {
 
-        public Product p;
-        int quantity;
+        string _productName;
+        int _quantity;
+        decimal _price;
 
-        public SalesItem(Product p, int q)
+        public SalesItem(string name,int quantity, decimal price)
         {
-            this.p = p;
-            quantity = q;
+         _productName = name;
+        _quantity = quantity;
+        _price = price;
         }
 
         public decimal GetCost()
         {
-            return p.UnitPrice * quantity;
+            return _price * _quantity;
         }
         public override string ToString()
         {
-            return p.ProductName + " " + quantity.ToString() + " " + this.GetCost().ToString();
+            return $"{_productName,20} {_quantity, 10} {_price, 10} {GetCost(),10}";
         }
     }
 }

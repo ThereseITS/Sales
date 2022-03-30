@@ -4,29 +4,29 @@ using System.Text;
 
 namespace Sales
 {
-    class SalesTransaction
+    class Basket
     {
         SalesItem[] items;
         static int maxItems=10;
         
         int nItems = 0;
 
-        public SalesTransaction(int max)
+        public Basket(int max)
         {
             maxItems = max;
             items = new SalesItem[maxItems];
         }
-        public SalesTransaction()
+        public Basket()
         {
             
             items = new SalesItem[maxItems];
         }
 
-        public bool AddItem(Product p, int qty)
+        public bool AddItem(string name, int quantity, decimal price)
         {
             if (nItems < maxItems)
             {
-                items[nItems] = new SalesItem(p, qty);
+                items[nItems] = new SalesItem(name, quantity,price);
                 nItems++;
                 return true;
             }

@@ -24,6 +24,7 @@ namespace Sales
 
                 string input;
                 decimal price;
+                int stockLevel;
                 
                 
 
@@ -32,19 +33,19 @@ namespace Sales
                     Console.WriteLine("Reading:" + input);
                     string[] fields = input.Split(','); // split input line
 
-                    if (fields.Length == 2)
+                    if (fields.Length == 3)
                     {
 
-                        if (decimal.TryParse(fields[1], out price))
+                        if (decimal.TryParse(fields[1], out price) && int.TryParse(fields[2], out stockLevel))
                         {
-                            Product p = new Product(fields[0], price);
+                            Product p = new Product(fields[0], price, stockLevel);
                             products.Add(p);
                             
                         }
                         else
                         {
 
-                            Console.WriteLine($"error in data on line{products.Count} : {input}");
+                            Console.WriteLine($"Error in data on line{products.Count} : {input}");
                         }
                     }
                    
@@ -64,8 +65,6 @@ namespace Sales
 
                 Console.WriteLine($"File: {ex.FileName}  Not found {ex.Message}  {path}");
             }
-
-
 
             return products;
         }

@@ -39,21 +39,34 @@
             _productCode = "P" + pCounter.ToString();
             pCounter++;
         }
-        public Product(string name, decimal uPrice):this()
+        public Product(string name, decimal uPrice, int stockLevel)
         {
-           
+            _productCode = "P" + pCounter.ToString();
+            pCounter++;
             this._productName = name;
             UnitPrice = uPrice;
-            this._stockLevel = 0;
+            this._stockLevel = stockLevel;
         }
         public void AddStock(int qty)
         {
             _stockLevel += qty;
         }
-
+        public int Buy(int qty)
+        {
+            if (_stockLevel >= qty)
+            {
+                _stockLevel -= qty;
+            }
+            else
+            {
+                qty = _stockLevel;
+                _stockLevel = 0;
+            }
+            return qty;
+        }
         public override string ToString()
         {
-            return string.Format( $"{_productCode} {_productName} {UnitPrice:C} {_stockLevel}");
+            return string.Format( $"{_productCode,10} {_productName,20} {UnitPrice:C} {_stockLevel,10}");
         }
 
     }

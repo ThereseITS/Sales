@@ -6,43 +6,28 @@ namespace Sales
 {
     class Basket
     {
-        SalesItem[] items;
-        static int maxItems=10;
-        
-        int nItems = 0;
-
-        public Basket(int max)
-        {
-            maxItems = max;
-            items = new SalesItem[maxItems];
-        }
+        List<SalesItem> _items ;
+   
         public Basket()
         {
-            
-            items = new SalesItem[maxItems];
+           
+            _items = new List<SalesItem>();
         }
+      
 
-        public bool AddItem(string name, int quantity, decimal price)
+        public void AddItem(string name, int quantity, decimal price)
         {
-            if (nItems < maxItems)
-            {
-                items[nItems] = new SalesItem(name, quantity,price);
-                nItems++;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           
+            _items.Add(new SalesItem(name, quantity,price));
             
         }
         public decimal CalculateTotalCost ()
         {
             decimal totalCost=0m;
 
-            for (int i=0;i<nItems;i++)
+            foreach (SalesItem i in _items)
             {
-                totalCost += items[i].GetCost();
+                totalCost += i.GetCost();
             }
 
             return totalCost;
@@ -50,11 +35,11 @@ namespace Sales
         public override string ToString()
         {
             string s="";
-            for (int i = 0; i < nItems; i++)
+            foreach (SalesItem i in _items)
             {
-                s = s + items[i].ToString() + "\n";
+                s = s + i.ToString() + "\n";
             }
-            s = s + "total cost: " + this.CalculateTotalCost().ToString();
+            s = s + "Total cost: " + this.CalculateTotalCost().ToString();
             return s;
         }
     }

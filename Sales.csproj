@@ -42,11 +42,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menu.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SalesItem.cs" />
-    <Compile Include="SalesTransaction.cs" />
+    <Compile Include="Basket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".vs\Sales\DesignTimeBuild\.dtbcache" />

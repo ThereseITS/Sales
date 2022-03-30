@@ -24,7 +24,7 @@ namespace Sales
         }
         public override string ToString()
         {
-            return p.ProductName + " " + quantity.ToString() + " " + this.GetCost().ToString();
+            return $"{_productName,20} {_price,10} {_quantity,10} {GetCost(),10}";
         }
     }
 }

@@ -33,12 +33,12 @@ namespace Sales
                     Console.WriteLine("Reading:" + input);
                     string[] fields = input.Split(','); // split input line
 
-                    if (fields.Length == 3)
+                    if (fields.Length == 4)
                     {
 
-                        if (decimal.TryParse(fields[1], out price) && int.TryParse(fields[2], out stockLevel))
+                        if (decimal.TryParse(fields[2], out price) && int.TryParse(fields[3], out stockLevel))
                         {
-                            Product p = new Product(fields[0], price, stockLevel);
+                            Product p = new Product(fields[0],fields[1], price, stockLevel);
                             products.Add(p);
                             
                         }
@@ -57,6 +57,7 @@ namespace Sales
                 }
 
                 sr.Close();
+                fs.Close();
 
 
             }
@@ -67,6 +68,30 @@ namespace Sales
             }
 
             return products;
+        }
+        public void WriteProducts(List<Product> products)
+        {
+           
+            FileStream fs;
+            try
+            {
+                fs = new FileStream(path, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+
+                foreach(Product p in products)
+                {
+                    sw.WriteLine(p.GetCSV());
+                }
+                    
+                sw.Close();
+                fs.Close();
+
+            }
+            catch (IOException ex)
+            {
+
+                Console.WriteLine($"I/O error writing to: {path}");
+            }
         }
 
     }

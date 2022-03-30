@@ -31,7 +31,19 @@
                 _productName = value;
             }
         }
-     
+        public int StockLevel
+        {
+            get
+            {
+                return _stockLevel;
+            }
+            set
+            {
+                _stockLevel = value;
+            }
+        }
+
+
         public decimal UnitPrice { get; set; }
 
         public Product()
@@ -43,6 +55,14 @@
         {
             _productCode = "P" + pCounter.ToString();
             pCounter++;
+            this._productName = name;
+            UnitPrice = uPrice;
+            this._stockLevel = stockLevel;
+        }
+        public Product(string code, string name, decimal uPrice, int stockLevel)
+        {
+            _productCode = code;
+           
             this._productName = name;
             UnitPrice = uPrice;
             this._stockLevel = stockLevel;
@@ -63,6 +83,10 @@
                 _stockLevel = 0;
             }
             return qty;
+        }
+        public string GetCSV()
+        {
+            return string.Format($"{_productCode},{_productName},{UnitPrice},{_stockLevel}");
         }
         public override string ToString()
         {

@@ -8,9 +8,14 @@ namespace Sales
     {
         static void Main(string[] args)
         {
-           
+
             string path = @".\products.txt";
             ProductData pr = new ProductData(path);
+
+            pr.WriteProducts(new List<Product> { new Product("Eggs", 3.50m, 20), new Product("Bread", 2.0m, 20), new Product("Jam", 3.70m, 25), new Product("Milk", 1.50m, 40), new Product("Apples", 0.50m, 30), new Product("Pens", 2.20m, 10), });
+
+
+
             List<Product> productList = pr.ReadProducts();
 
             string[] menuOptions = { "Sales transaction", "Quit" };
@@ -22,14 +27,15 @@ namespace Sales
 
                 switch (choice)
                 {
-                    case 1: ProcessSale(productList);break;
-                    
-                    default:break;
+                    case 1: ProcessSale(productList); break;
+
+                    default: break;
 
                 }
                 choice = m.GetMenuChoice();
             }
-           
+
+            pr.WriteProducts(productList); // save the product list
 
         }
         static decimal ProcessSale(List<Product> productList)

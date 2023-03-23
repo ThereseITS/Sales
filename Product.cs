@@ -26,7 +26,7 @@
             {
                 return _productName;
             }
-            set
+            private set
             {
                 _productName = value;
             }
@@ -37,7 +37,7 @@
             {
                 return _stockLevel;
             }
-            set
+           private set
             {
                 _stockLevel = value;
             }
@@ -71,6 +71,12 @@
         {
             _stockLevel += qty;
         }
+
+        /// <summary>
+        ///  The stocklevel is updated.
+        /// </summary>
+        /// <param name="qty"></param>
+        /// <returns>Returns the quantity of items bought stocklevel, if qty>stockLevel.</returns>
         public int Buy(int qty)
         {
             if (_stockLevel >= qty)

@@ -34,12 +34,12 @@ namespace Sales
         }
         public override string ToString()
         {
-            string s="";
+            string s="SuperShop\n_________\n\n";
             foreach (SalesItem i in _items)
             {
                 s = s + i.ToString() + "\n";
             }
-            s = s + "Total cost: " + this.CalculateTotalCost().ToString();
+            s = s + $"\nTotal cost: {this.CalculateTotalCost().ToString():C2}\n\n ";
             return s;
         }
     }

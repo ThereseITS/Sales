@@ -73,7 +73,7 @@ namespace Sales
 
             try
             {
-
+                if(!File.Exists(path))
                 using (StreamWriter sw = File.CreateText(path))
                 {
                     foreach (Product p in products)

@@ -9,12 +9,11 @@ namespace Sales
         static void Main(string[] args)
         {
 
-            string path = @".\products.txt";
+            string path = @"..\..\products.txt";
+
             ProductData pr = new ProductData(path);
-
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             pr.WriteProducts(new List<Product> { new Product("Eggs", 3.50m, 20), new Product("Bread", 2.0m, 20), new Product("Jam", 3.70m, 25), new Product("Milk", 1.50m, 40), new Product("Apples", 0.50m, 30), new Product("Pens", 2.20m, 10), });
-
-
 
             List<Product> productList = pr.ReadProducts();
 
@@ -68,7 +67,7 @@ namespace Sales
                     WriteLine("Please enter a valid quantity:");
                 }
                 int quantityBought = productList[index].Buy(qty);
-                WriteLine($"You have just bought {quantityBought} of {productList[index].ProductName} @ {productList[index].UnitPrice}");
+                WriteLine($"{quantityBought} of {productList[index].ProductName} @ {productList[index].UnitPrice}");
                 b.AddItem(productList[index].ProductName, quantityBought, productList[index].UnitPrice);
 
                 WriteLine("Another ?");

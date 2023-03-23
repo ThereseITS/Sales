@@ -16,24 +16,16 @@ namespace Sales
       public int GetMenuChoice()
         {
             int menuChoice = 0;
-            do
-            {
+
                 for (int i = 0; i < _menuOptions.Length; i++)
                     WriteLine($"{i + 1} . {_menuOptions[i]}");
 
                 WriteLine("Enter Choice:");
-                while (!int.TryParse(ReadLine(), out menuChoice))
+                while (!(int.TryParse(ReadLine(), out menuChoice)&& (menuChoice <= _menuOptions.Length) && (menuChoice >=1)))
                 {
                     WriteLine($"Please enter a number between 1 and {_menuOptions.Length}:");
                 }
 
-                if ((menuChoice > _menuOptions.Length) || (menuChoice < 1))
-                {
-                    WriteLine($"Please enter a number between 1 and {_menuOptions.Length}:");
-                }
-
-            }
-            while ((menuChoice > _menuOptions.Length) || (menuChoice < 1));
             return menuChoice;
         }
     }

@@ -43,8 +43,7 @@
             }
         }
 
-
-        public decimal UnitPrice { get; set; }
+        public decimal UnitPrice { get; private set; }
 
         public Product()
         {
@@ -73,7 +72,7 @@
         }
 
         /// <summary>
-        ///  The stocklevel is updated.
+        ///  The stocklevel is deceremented by the qty.if qty>stockLevel, then the stocklevel is returned and then set to 0
         /// </summary>
         /// <param name="qty"></param>
         /// <returns>Returns the quantity of items bought stocklevel, if qty>stockLevel.</returns>
